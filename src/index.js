@@ -1,7 +1,7 @@
 
 const main = document.querySelector('main')
-
-
+let removeBtns;
+let searchArray = []
 let sample = [
     {
         "id": 1,
@@ -201,21 +201,50 @@ let sample = [
             `
             sea.innerHTML = keyword
         searchBox.append(sea)
-        e.addEventListener('click', console.log(e.textContent))
+        searchArray.push(e.textContent)
+        removeKeyword()
     }
+    //let there = searchArray.filter(me => me !== 'CSS')
     const keys = document.querySelectorAll('.keys')
     keys.forEach(key => {
         key.addEventListener('click', () => {
-            InsertKeyword(key)
+            if  (!searchArray.includes(key.textContent)){
+                InsertKeyword(key)
+            }
         })
-        
-        
     });
-    function removeKeyword(e) {
-        e.parentElement.remove
-        console.log('me')
+    function removeKeyword() {
+        if (removeBtns) {
+            removeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.parentElement.remove()
+                    console.log('me')
+                })
+            });
+            } 
     }
-    const removeBtns = document.querySelectorAll('.removeBtn')
-    removeBtns.forEach(btn => {
-        btn.addEventListener('click', removeKeyword(btn))
-    });
+    
+    
+/* 
+    function filterConts() {
+        const container = document.querySelectorAll('.container')
+        container.forEach(cont => {
+            let btns = cont.querySelectorAll('button')
+            btns.forEach(btn => {
+            
+                let bike =  [...btns].filter(item => 
+                    searchArray.every(term =>
+                        item.includes(term)
+                    )
+                )
+                console.log(bike)
+            });
+        });
+    } 
+    function protsearch(array, searchterms) {
+    return array.filter(item => 
+        searchterms.every(term =>
+            item.includes(term)
+        )
+    )
+} */
