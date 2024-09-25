@@ -1,6 +1,7 @@
 
 const main = document.querySelector('main')
 let removeBtns;
+let buttons = main.querySelectorAll('button')
 let searchArray = []
 let sample = [
     {
@@ -248,3 +249,15 @@ let sample = [
         )
     )
 } */
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        werter(btn)
+    })
+});
+
+    function werter(e) {
+        if(!searchArray.includes(e.textContent)){
+        e.parentElement.parentElement.classList.add('false')
+        console.log(e.parentElement.parentElement.classLis)
+    }}
+    
